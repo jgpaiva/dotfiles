@@ -41,7 +41,6 @@ syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 set nofoldenable " Say no to code folding...
 " Highlight the status line
-highlight StatusLine ctermfg=blue ctermbg=yellow
 set number " show line number
 set splitright " splitting a window will put the new window right of the current one
 set showmatch " show matching bracket
@@ -187,10 +186,11 @@ set statusline+=%{&paste?'[paste]':''}
 set statusline+=%*
 
 set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=(%v),   "virtual cursor column
+set statusline+=%c%V,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
+
+highlight StatusLine ctermfg=blue ctermbg=yellow
 
 " *************************************************************************
 " ************************        Functions      **************************
