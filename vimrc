@@ -1,143 +1,180 @@
+" must do
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
-"source ~/.vim/python_vimrc.txt
-"source $VIMRUNTIME/mswin.vim
 
-set diffexpr=
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
+" set PWD to file's folder
+cd %:p:h
 
-
-"added by jgpaiva
-
+" set colorscheme
 colorscheme asmanian2
 
-set cmdheight=2
-set hlsearch
-set ignorecase smartcase
-set incsearch
-set infercase
-set expandtab 
-set softtabstop=4
-set shiftwidth=4
-"set smartindent
-"set paste
-set wrap
-set ruler
-set foldcolumn=1
-set foldenable " Turn on folding
-set foldmethod=indent " Make folding indent sensitive
-set foldlevel=100 " Don't autofold anything (but I can still fold manually)
-set backspace=2
-set virtualedit=all
-set laststatus=2
-imap <C-BS> vboldi
-set number
-set showmatch
-set gdefault
-set showcmd
-set whichwrap=h,l,~,[,]
-set fillchars=vert:\ ,fold:-
-set hidden " you can change buffer without saving
-set shortmess=atI " shortens messages to avoid 'press a key' prompt 
-set showbreak=+\
-set viminfo=s1,<1024000,'1024000,/1024000,:1024000,@1024000,f1,%
-set splitright
-setlocal textwidth=78
-set guioptions=r
-set wildmode=longest,list,full
-set diffopt+=iwhite "vimdiff ignore white space
+" general options
+set hidden " allow switching buffer without saving
+set virtualedit=all " allow the cursor to go outside the text
+set backspace=2 " allow backspacing over autoindent, line breaks and start of insert
+set autoread " read file again if was changed
+set viminfo=s1,<1024000,'1024000,/1024000,:1024000,@1024000,f1,% " save lots of lines
+set diffopt+=iwhite " vimdiff ignore white space
 
+" search
+set hlsearch " set highlight search
+set ignorecase smartcase " make "hi" match "HI" but "HI" only match "HI"
+set incsearch " incremental search
+set gdefault " make g default option when searching
 
-"imap
-imap  :updatei<Right>
-imap <F9> :update:make clean:make
-imap <C-BS> vboldi
-"vmap
-vmap <tab> >gv
-vmap <s-tab> <gv
-vmap  :updategv
-"nmap
-nmap  o
-nmap <F9> :update:make clean:make
-nmap  :update
-nmap <Space> <PageDown>
-nmap <BS> <PageUp>
-nmap  :bnext
-nmap  :bprevious
-nmap -cd :cd%:h<CR>
-nmap -lcd :lcd%:h<CR>
-nmap <c-f4> :bdel<cr>
-nmap î :cnext<CR>
-nmap ð :cprev<CR>
-nmap <c-tab> gqap
-nmap <c-s-tab> :tabprev<CR>
-nmap <C-J> gj
-nmap <C-K> gk
-nmap <C-L> <C-F>
-nmap <C-H> <C-B>
-nmap <bs> i<bs>
-nmap <space> a<space>
-nmap \ @@
-nmap ç :e!<CR>G
-nmap <tab> :bn<cr>
-nmap <s-tab> :bp<cr>
-nmap _ -lcd:!cp % aa.tex:!pdflatex aa.tex:!bibtex aa:!pdflatex aa.tex:!pdflatex aa.tex:!pdflatex aa.tex
+" command line
+set cmdheight=2 " make command window 2 lines high
+set showcmd " show (partial) command in the last line of the screen
+set ruler " set ruler (bottom of the screen, info on file position)
+set laststatus=2 " show last statusbar
+set shortmess=atI " shortens messages
+set infercase " match commands without regard for capitalization
+set wildmenu " completion on command line
+set wildmode=longest,list,full " complete options with tab
 
+" looks-related stuff
+set fillchars=vert:\ ,fold:- " fill chars for splits
+set guioptions=r " right hand scroll bar always present
+syntax on                 " Enable syntax highlighting
+filetype plugin indent on " Enable filetype-specific indenting and plugins
+set nofoldenable " Say no to code folding...
+" Highlight the status line
+highlight StatusLine ctermfg=blue ctermbg=yellow
+set number " show line number
+set splitright " splitting a window will put the new window right of the current one
+set showmatch " show matching bracket
 
+" text width
+set colorcolumn=80 " show column at 80 characters
+highlight ColorColumn ctermbg=244 " color for column at 80 char
+set wrap " set line wrap
+set showbreak=+\ " characters to use when breaking line
+" setlocal textwidth=78
 
-let g:miniBufExplMapCTabSwitchWindows = 1
-let g:miniBufExplUseSingleClick = 1
-
+" encoding
 set fileencoding=utf-8
 set encoding=utf-8
 let &termencoding = &encoding
-cd %:p:h
 
-" I haven't found how to hide this function (yet)
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
+" indenting
+set smarttab
+set expandtab " expand tabs to spaces
+set autoindent " always set autoindenting on
+set smartindent
+set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
+set softtabstop=4
+set shiftwidth=4
 
-function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
-endfunction
+" set whichwrap=h,l,~,[,]
 
-" NB: this supports "rp that replaces the selection by the contents of @r
-vnoremap <silent> <expr> p <sid>Repl()
+" backup
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file
+endif
+set backupdir=~/.tmp
+set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files
 
-function! SmartHome()
-  let s:col = col(".")
-  normal! ^
-  if s:col == col(".")
-    normal! 0
-  endif
-endfunction
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+autocmd BufReadPost *
+\ if line("'\"") > 1 && line("'\"") <= line("$") |
+\   exe "normal! g`\"" |
+\ endif
 
-nnoremap <silent> <Home> :call SmartHome()<CR>
-inoremap <silent> <Home> <C-O>:call SmartHome()<CR>
+" *************************************************************************
+" ************************         Mappings       *************************
+" *************************************************************************
+"leader commands
+let mapleader = "§"
+" compile LaTeX
+nnoremap <Leader>l -lcd:!cp % aa.tex:!pdflatex aa.tex:!bibtex aa:!pdflatex aa.tex:!pdflatex aa.tex
+" switch directories
+nnoremap <Leader>cd :cd%:h<CR>
+nnoremap <Leader>lcd :lcd%:h<CR>
+nmap <Leader>d :bdel<cr>v
+nmap <Leader>h :nohl<cr>
 
-command Date :r !date +"\%y\%m\%d"
+" delete word and create undo
+inoremap <C-W> <C-G>u<C-W>
+" delete character and create undo
+inoremap <bs> <C-G>u<bs>
+" move down without changing cursor
+inoremap <C-J> <C-X><C-E>
+" move up without changing cursor
+inoremap <C-K> <C-X><C-Y>
+" move down without moving cursor
+nnoremap <C-J> <C-E>
+" move up without moving cursor
+nnoremap <C-K> <C-Y>
+" Let's be reasonable, shall we? (arrow keys work as usual)
+nnoremap k gk
+nnoremap j gj
+" Emacs-like beginning and end of line.
+inoremap <C-E> <C-O>$
+inoremap <C-A> <C-O>^
+nnoremap <C-E> $
+nnoremap <C-A> ^
+" save with s
+nnoremap s :update
+" open with enter  
+nnoremap <CR> o
+" insert space with space
+nnoremap <SPACE> a<SPACE>
+" delete with backspace
+nnoremap <BS> i<BS>
+" switch between buffers
+nnoremap <C-N> :bnext<cr>
+nnoremap <C-P> :bprevious<cr>
+nnoremap <tab> :bnext<cr>
+nnoremap <s-tab> :bprevious<cr>
+" reload buffer
+nnoremap ç :e<CR>G
+nnoremap Ç :e!<CR>G
+" Disable K looking stuff up
+map K <Nop>
+" Disable a frequent mistype
+map '0 <Nop>
+" indentation
+vnoremap < <gv " indentation without losing selection
+vnoremap > >gv " indentation without losing selection
+vnoremap <tab> >gv
+vnoremap <s-tab> <gv
+
+" *************************************************************************
+" ************************        Functions      **************************
+" *************************************************************************
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
+
+if !exists("function MyDiff")
+    set diffexpr=
+    function! MyDiff()
+        let opt = '-a --binary '
+        if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+        if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+        let arg1 = v:fname_in
+        if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+        let arg2 = v:fname_new
+        if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+        let arg3 = v:fname_out
+        if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+        let eq = ''
+        if $VIMRUNTIME =~ ' '
+            if &sh =~ '\<cmd'
+                let cmd = '""' . $VIMRUNTIME . '\diff"'
+                let eq = '"'
+            else
+                let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+            endif
+        else
+            let cmd = $VIMRUNTIME . '\diff'
+        endif
+        silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+    endfunction
+endif
