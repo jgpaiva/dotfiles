@@ -1,7 +1,9 @@
+
 " must do
 set nocompatible
 
 " set colorscheme
+set term=xterm-256color
 colorscheme asmanian2
 
 " set PWD to file's folder
