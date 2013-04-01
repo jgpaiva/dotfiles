@@ -1,11 +1,12 @@
 " must do
 set nocompatible
 
+" set colorscheme
+colorscheme asmanian2
+
 " set PWD to file's folder
 cd %:p:h
 
-" set colorscheme
-colorscheme asmanian2
 
 " general options
 set hidden " allow switching buffer without saving
@@ -42,6 +43,9 @@ highlight StatusLine ctermfg=blue ctermbg=yellow
 set number " show line number
 set splitright " splitting a window will put the new window right of the current one
 set showmatch " show matching bracket
+"some stuff to get the mouse going in term
+set mouse=a
+"set ttymouse=xterm2
 
 " text width
 set colorcolumn=80 " show column at 80 characters
@@ -145,6 +149,48 @@ vnoremap <tab> >gv
 vnoremap <s-tab> <gv
 
 " *************************************************************************
+" *********************  Statusline pr0n   ********************************
+" *************************************************************************
+"statusline setup
+set statusline =%#identifier#
+set statusline+=[%f]    "tail of the filename
+set statusline+=%*
+
+""display a warning if fileformat isnt unix
+set statusline+=%#warningmsg#
+set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+set statusline+=%*
+
+"display a warning if file encoding isnt utf-8
+set statusline+=%#warningmsg#
+set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+set statusline+=%*
+
+set statusline+=%h      "help file flag
+set statusline+=%y      "filetype
+
+""read only flag
+set statusline+=%#identifier#
+set statusline+=%r
+set statusline+=%*
+
+"modified flag
+set statusline+=%#identifier#
+set statusline+=%m
+set statusline+=%*
+
+"display a warning if &paste is set
+set statusline+=%#error#
+set statusline+=%{&paste?'[paste]':''}
+set statusline+=%*
+
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=(%v),   "virtual cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+
+" *************************************************************************
 " ************************        Functions      **************************
 " *************************************************************************
 if !exists(":DiffOrig")
@@ -178,3 +224,4 @@ if !exists("function MyDiff")
         silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
     endfunction
 endif
+
