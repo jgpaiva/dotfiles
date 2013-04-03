@@ -96,12 +96,17 @@ autocmd BufReadPost *
 "leader commands
 let mapleader = "§"
 " compile LaTeX
-nnoremap <Leader>l -lcd:!cp % aa.tex:!pdflatex aa.tex:!bibtex aa:!pdflatex aa.tex:!pdflatex aa.tex
-" switch directories
+nnoremap <Leader>l :lcd%:h<CR>:!cp % aa.tex:!pdflatex aa.tex:!bibtex aa:!pdflatex aa.tex:!pdflatex aa.tex
+" change vim's working directory to file's directory
 nnoremap <Leader>cd :cd%:h<CR>
+" change buffer's local directory to file's directory
 nnoremap <Leader>lcd :lcd%:h<CR>
-nmap <Leader>d :bdel<cr>v
-nmap <Leader>h :nohl<cr>
+" delete buffer in window, open next one
+nnoremap <Leader>d :bdel<cr>v
+" disable highlighting
+nnoremap <Leader>h :nohl<cr>
+" format paragraphs with §f
+nnoremap <leader>f gqap
 
 " delete word and create undo
 inoremap <C-W> <C-G>u<C-W>
