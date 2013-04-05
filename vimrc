@@ -42,6 +42,7 @@ filetype plugin indent on " Enable filetype-specific indenting and plugins
 set nofoldenable " Say no to code folding...
 " Highlight the status line
 set number " show line number
+set numberwidth=1 " don't waste space next to numbers
 set splitright " splitting a window will put the new window right of the current one
 set showmatch " show matching bracket
 "some stuff to get the mouse going in term
