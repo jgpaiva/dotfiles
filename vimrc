@@ -108,6 +108,8 @@ nnoremap <Leader>d :bdel<cr>v
 nnoremap <Leader>h :nohl<cr>
 " format paragraphs with §f
 nnoremap <leader>f gqap
+" save
+nnoremap <leader>s :update
 
 " delete word and create undo
 inoremap <C-W> <C-G>u<C-W>
@@ -154,6 +156,9 @@ vnoremap < <gv " indentation without losing selection
 vnoremap > >gv " indentation without losing selection
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
+
+" why doesn't the command line work as it should?
+cnoremap <C-A> <Home>
 
 " *************************************************************************
 " *********************  Statusline pr0n   ********************************
