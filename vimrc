@@ -16,6 +16,7 @@ set virtualedit=all " allow the cursor to go outside the text
 set backspace=2 " allow backspacing over autoindent, line breaks and start of insert
 set autoread " read file again if was changed
 set viminfo=s1,<1024000,'1024000,/1024000,:1024000,@1024000,f1,% " save lots of lines
+set history=1000
 set diffopt+=iwhite " vimdiff ignore white space
 
 " search
@@ -97,7 +98,7 @@ autocmd BufReadPost *
 "leader commands
 let mapleader = "§"
 " compile LaTeX
-nnoremap <Leader>l :lcd%:h<CR>:!cp % aa.tex:!pdflatex aa.tex:!bibtex aa:!pdflatex aa.tex:!pdflatex aa.tex
+nnoremap <Leader>l :lcd%:h<CR>:!cp % .tmp.tex:!pdflatex .tmp.tex:!bibtex .tmp:!pdflatex .tmp.tex:!pdflatex .tmp.tex:!mv .tmp.pdf %:t:r.pdf:!rm .tmp.*
 " change vim's working directory to file's directory
 nnoremap <Leader>cd :cd%:h<CR>
 " change buffer's local directory to file's directory
