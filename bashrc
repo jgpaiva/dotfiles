@@ -71,6 +71,7 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias ps="ps auxww"
 alias s="ls"
+alias ls="ls --color"
 alias grep="grep --color=auto"
 alias p="python -c 'import os,sys;print os.path.realpath(sys.argv[1])' "
 
@@ -84,7 +85,8 @@ export PYTHONPATH
 
 grid="u01000@grid.inesc-id.pt"
 cloud="cloudtm.ist.utl.pt"
-uranium="jgpaiva.dyndns.org"
+EDITOR=vim
+export EDITOR
 
 CLICOLOR=true
 export CLICOLOR
