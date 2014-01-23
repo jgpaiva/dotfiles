@@ -3,8 +3,9 @@
 set nocompatible
 
 " set colorscheme
-set term=xterm-256color
-colorscheme asmanian2
+"set term=xterm-256color "apparently this is not needed
+colorscheme badwolf
+" from curl https://raw.github.com/sjl/badwolf/master/colors/badwolf.vim -o ~/.vim/colors/badwolf.vim
 
 " set PWD to file's folder
 cd %:p:h

@@ -71,8 +71,6 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias ps="ps auxww"
 alias s="ls"
-alias ls="ls --color"
-alias grep="grep --color=auto"
 alias p="python -c 'import os,sys;print os.path.realpath(sys.argv[1])' "
 
 PATH=/Applications/vim:~/.bin:~/Documents/workspace/peersim_jgpaiva/scripts:$PATH
