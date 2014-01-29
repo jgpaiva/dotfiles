@@ -19,6 +19,8 @@ set autoread " read file again if was changed
 set viminfo=s1,<1024000,'1024000,/1024000,:1024000,@1024000,f1,% " save lots of lines
 set history=1000
 set diffopt+=iwhite " vimdiff ignore white space
+set formatoptions-=t "do not enter \n automatically at 80 chars
+set formatprg=par
 
 " search
 set hlsearch " set highlight search
@@ -41,6 +43,7 @@ set fillchars=vert:\ ,fold:- " fill chars for splits
 set guioptions=r " right hand scroll bar always present
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
+let python_highlight_all = 1 " python highlighting from curl https://raw.github.com/hdima/python-syntax/master/syntax/python.vim -o ~/.vim/syntax/python.vim
 set nofoldenable " Say no to code folding...
 " Highlight the status line
 set number " show line number
