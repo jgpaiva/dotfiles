@@ -19,8 +19,9 @@ set viminfo=s1,<1024000,'1024000,/1024000,:1024000,@1024000,f1,% " save lots of 
 set history=1000
 set diffopt+=iwhite " vimdiff ignore white space
 set formatoptions-=t "do not enter \n automatically at 80 chars
-set formatprg=par
-autocmd FileType python set formatprg=autopep8\ - "format python using autopep8"
+
+autocmd BufRead,BufEnter *.*,*  set formatprg=par "format everything else using par
+autocmd BufRead,BufEnter *.py set formatprg=autopep8\ - "format python using autopep8"
 
 " search
 set hlsearch " set highlight search
@@ -108,7 +109,7 @@ nnoremap <Leader>cd :cd%:h<CR>
 " change buffer's local directory to file's directory
 nnoremap <Leader>lcd :lcd%:h<CR>
 " delete buffer in window, open next one
-nnoremap <Leader>d :bdel<cr>v
+nnoremap <Leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 " disable highlighting
 nnoremap <Leader>h :nohl<cr>
 " format paragraphs with §f
