@@ -1,4 +1,3 @@
-
 " must do
 set nocompatible
 
@@ -21,6 +20,7 @@ set history=1000
 set diffopt+=iwhite " vimdiff ignore white space
 set formatoptions-=t "do not enter \n automatically at 80 chars
 set formatprg=par
+autocmd FileType python set formatprg=autopep8\ - "format python using autopep8"
 
 " search
 set hlsearch " set highlight search
