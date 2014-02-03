@@ -74,12 +74,13 @@ alias s="ls"
 alias p="python -c 'import os,sys;print os.path.realpath(sys.argv[1])' "
 
 PATH=/Applications/vim:~/.bin:~/Documents/workspace/peersim_jgpaiva/scripts:$PATH
-PATH=/opt/local/bin:$PATH
+# for homebrew
+PATH=/usr/local/bin:/usr/local/sbin:$PATH
+# for mactex
+PATH=/usr/texbin:"$PATH"
 export PATH
 VIM_APP_DIR=/Applications/vim
 export VIM_APP_DIR
-PYTHONPATH=~/Dropbox/python/libs/
-export PYTHONPATH
 
 grid="u01000@grid.inesc-id.pt"
 cloud="cloudtm.ist.utl.pt"
