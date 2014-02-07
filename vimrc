@@ -42,9 +42,6 @@ set wildmode=longest,list,full " complete options with tab
 " looks-related stuff
 set fillchars=vert:\ ,fold:- " fill chars for splits
 set guioptions=r " right hand scroll bar always present
-syntax on                 " Enable syntax highlighting
-filetype plugin indent on " Enable filetype-specific indenting and plugins
-let python_highlight_all = 1 " python highlighting from curl https://raw.github.com/hdima/python-syntax/master/syntax/python.vim -o ~/.vim/syntax/python.vim
 set nofoldenable " Say no to code folding...
 " Highlight the status line
 set number " show line number
@@ -103,9 +100,14 @@ autocmd BufReadPost *
 " curl -Sso ~/.vim/autoload/pathogen.vim \
 "     https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 execute pathogen#infect()
+syntax on                 " Enable syntax highlighting
+filetype plugin indent on " Enable filetype-specific indenting and plugins
+let g:pymode_syntax = 0
+let python_highlight_all = 1
 
 " mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/tpope/vim-fugitive.git
 " mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/klen/python-mode.git
+" mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/hdima/python-syntax.git
 
 " *************************************************************************
 " ************************         Mappings       *************************
