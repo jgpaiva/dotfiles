@@ -97,6 +97,16 @@ autocmd BufReadPost *
 \   exe "normal! g`\"" |
 \ endif
 
+
+" for pathogen
+" mkdir -p ~/.vim/autoload ~/.vim/bundle; \
+" curl -Sso ~/.vim/autoload/pathogen.vim \
+"     https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+execute pathogen#infect()
+
+" mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/tpope/vim-fugitive.git
+" mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/klen/python-mode.git
+
 " *************************************************************************
 " ************************         Mappings       *************************
 " *************************************************************************
@@ -172,6 +182,7 @@ cnoremap <C-A> <Home>
 "statusline setup
 set statusline =%#identifier#
 set statusline+=[%f]    "tail of the filename
+set statusline+=%{fugitive#statusline()}
 set statusline+=%*
 
 ""display a warning if fileformat isnt unix
