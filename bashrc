@@ -73,6 +73,8 @@ alias ps="ps auxww"
 alias s="ls"
 alias p="python -c 'import os,sys;print os.path.realpath(sys.argv[1])' "
 
+a() { alias $1="cd $PWD"; } # alias to create bookmarks
+
 PATH=/Applications/vim:~/.bin:~/Documents/workspace/peersim_jgpaiva/scripts:$PATH
 # for homebrew
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
