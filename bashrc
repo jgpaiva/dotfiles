@@ -73,6 +73,9 @@ alias ps="ps auxww"
 alias s="ls"
 alias p="python -c 'import os,sys;print os.path.realpath(sys.argv[1])' "
 
+# allow ** to match all subdirectories
+shopt -s globstar 
+
 a() { alias $1="cd $PWD"; } # alias to create bookmarks
 
 PATH=/Applications/vim:~/.bin:~/Documents/workspace/peersim_jgpaiva/scripts:$PATH
