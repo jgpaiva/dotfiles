@@ -7,7 +7,9 @@ colorscheme badwolf
 " from curl https://raw.github.com/sjl/badwolf/master/colors/badwolf.vim -o ~/.vim/colors/badwolf.vim
 
 " set PWD to file's folder
-cd %:p:h
+if filereadable("%:p:h")
+	cd %:p:h
+endif
 
 
 " general options
