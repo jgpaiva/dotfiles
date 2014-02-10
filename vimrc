@@ -116,8 +116,8 @@ let python_highlight_all = 1
 " *************************************************************************
 "leader commands
 let mapleader = "§"
-" compile LaTeX
-nnoremap <Leader>l :lcd%:h<CR>:!cp % .tmp.tex:!pdflatex .tmp.tex:!bibtex .tmp:!pdflatex .tmp.tex:!pdflatex .tmp.tex:!mv .tmp.pdf %:t:r.pdf:!rm .tmp.*
+" compile anything
+nnoremap <Leader>m :make
 " change vim's working directory to file's directory
 nnoremap <Leader>cd :cd%:h<CR>
 " change buffer's local directory to file's directory
