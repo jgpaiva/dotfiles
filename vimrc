@@ -117,7 +117,7 @@ let python_highlight_all = 1
 "leader commands
 let mapleader = "§"
 " compile anything
-nnoremap <Leader>m :make
+nnoremap <Leader>m :w<CR>:make<CR>
 " change vim's working directory to file's directory
 nnoremap <Leader>cd :cd%:h<CR>
 " change buffer's local directory to file's directory

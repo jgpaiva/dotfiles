@@ -2,3 +2,4 @@
 "\e[1;5D": backward-word
 "\C-x*": glob-expand-word
 set mark-symlinked-directories on
+set completion-ignore-case on
