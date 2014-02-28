@@ -2,7 +2,7 @@
 set nocompatible
 
 " set colorscheme
-"set term=xterm-256color "apparently this is not needed
+" set term=xterm-256color "apparently this is not needed
 colorscheme badwolf
 " from curl https://raw.github.com/sjl/badwolf/master/colors/badwolf.vim -o ~/.vim/colors/badwolf.vim
 
@@ -130,6 +130,8 @@ nnoremap <Leader>h :nohl<cr>
 nnoremap <leader>f gqap
 " save
 nnoremap <leader>s :update
+" create table from csv
+nnoremap <leader>t :%Table<CR>:set nowrap<CR>
 
 " delete word and create undo
 inoremap <C-W> <C-G>u<C-W>
