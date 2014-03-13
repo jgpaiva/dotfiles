@@ -106,6 +106,7 @@ syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 let g:pymode_syntax = 0
 let python_highlight_all = 1
+let g:pymode_lint_checkers = ['pyflakes', 'mccabe'] " disable pep8 annoyances
 
 " mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/tpope/vim-fugitive.git
 " mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/klen/python-mode.git
