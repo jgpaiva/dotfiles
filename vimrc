@@ -1,8 +1,7 @@
 " must do
 set nocompatible
 
-" set colorscheme
-" set term=xterm-256color "apparently this is not needed
+set term=xterm-256color "apparently this is not needed
 colorscheme badwolf
 " from curl https://raw.github.com/sjl/badwolf/master/colors/badwolf.vim -o ~/.vim/colors/badwolf.vim
 
@@ -112,6 +111,7 @@ let g:pymode_rope = 0 " Auto-complete would be nice if it didn't constantly hang
 " mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/tpope/vim-fugitive.git
 " mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/klen/python-mode.git
 " mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/hdima/python-syntax.git
+" mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/Valloric/YouCompleteMe.git && cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh
 
 " *************************************************************************
 " ************************         Mappings       *************************
