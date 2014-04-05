@@ -94,3 +94,6 @@ export EDITOR
 
 CLICOLOR=true
 export CLICOLOR
+
+GREP_OPTIONS='--color=auto'
+export GREP_OPTIONS
