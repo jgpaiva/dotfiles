@@ -112,6 +112,7 @@ let g:pymode_rope = 0 " Auto-complete would be nice if it didn't constantly hang
 " mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/klen/python-mode.git
 " mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/hdima/python-syntax.git
 " mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/Valloric/YouCompleteMe.git && cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh
+" mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/b4winckler/vim-angry.git
 
 " *************************************************************************
 " ************************         Mappings       *************************
