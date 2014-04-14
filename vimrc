@@ -31,7 +31,6 @@ set incsearch " incremental search
 set gdefault " make g default option when searching
 
 " command line
-set cmdheight=2 " make command window 2 lines high
 set showcmd " show (partial) command in the last line of the screen
 set ruler " set ruler (bottom of the screen, info on file position)
 set laststatus=2 " show last statusbar
@@ -44,7 +43,6 @@ set wildmode=longest,list,full " complete options with tab
 set fillchars=vert:\ ,fold:- " fill chars for splits
 set guioptions=r " right hand scroll bar always present
 set nofoldenable " Say no to code folding...
-" Highlight the status line
 set number " show line number
 set numberwidth=1 " don't waste space next to numbers
 set splitright " splitting a window will put the new window right of the current one
@@ -108,11 +106,13 @@ let python_highlight_all = 1
 let g:pymode_lint_checkers = ['pyflakes', 'mccabe'] " disable pep8 annoyances
 let g:pymode_rope = 0 " Auto-complete would be nice if it didn't constantly hang
 
-" mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/tpope/vim-fugitive.git
-" mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/klen/python-mode.git
-" mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/hdima/python-syntax.git
-" mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/Valloric/YouCompleteMe.git && cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh
-" mkdir -p ~/.vim/bundle && cd ~/.vim/bundle && git clone git://github.com/b4winckler/vim-angry.git
+
+" !git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive.git
+" !git clone git://github.com/klen/python-mode.git ~/.vim/bundle/python-mode.git
+" !git clone git://github.com/hdima/python-syntax.git ~/.vim/bundle/python-syntax.git
+" !git clone git://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe.git && cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh
+" !git clone git://github.com/b4winckler/vim-angry.git ~/.vim/bundle/vim-angry.git
+" !git clone https://github.com/bling/vim-airline.git ~/.vim/bundle/vim-airline.git
 
 " *************************************************************************
 " ************************         Mappings       *************************
@@ -158,7 +158,7 @@ nnoremap <C-E> $
 nnoremap <C-A> ^
 " save with s
 nnoremap s :update
-" open with enter  
+" open with enter
 nnoremap <CR> o
 " insert space with space
 nnoremap <SPACE> a<SPACE>
@@ -186,50 +186,6 @@ vnoremap <s-tab> <gv
 cnoremap <C-A> <Home>
 
 nmap q: :q
-
-" *************************************************************************
-" *********************  Statusline pr0n   ********************************
-" *************************************************************************
-"statusline setup
-set statusline =%#identifier#
-set statusline+=[%f]    "tail of the filename
-set statusline+=%{fugitive#statusline()}
-set statusline+=%*
-
-""display a warning if fileformat isnt unix
-set statusline+=%#warningmsg#
-set statusline+=%{&ff!='unix'?'['.&ff.']':''}
-set statusline+=%*
-
-"display a warning if file encoding isnt utf-8
-set statusline+=%#warningmsg#
-set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-set statusline+=%*
-
-set statusline+=%h      "help file flag
-set statusline+=%y      "filetype
-
-""read only flag
-set statusline+=%#identifier#
-set statusline+=%r
-set statusline+=%*
-
-"modified flag
-set statusline+=%#identifier#
-set statusline+=%m
-set statusline+=%*
-
-"display a warning if &paste is set
-set statusline+=%#error#
-set statusline+=%{&paste?'[paste]':''}
-set statusline+=%*
-
-set statusline+=%=      "left/right separator
-set statusline+=%c%V,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
-
-highlight StatusLine ctermfg=blue ctermbg=yellow
 
 " *************************************************************************
 " ************************        Functions      **************************
