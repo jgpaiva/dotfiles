@@ -3,7 +3,7 @@ set nocompatible
 
 set term=xterm-256color "apparently this is not needed
 colorscheme badwolf
-" from curl https://raw.github.com/sjl/badwolf/master/colors/badwolf.vim -o ~/.vim/colors/badwolf.vim
+" from wget https://raw.github.com/sjl/badwolf/master/colors/badwolf.vim -O ~/.vim/colors/badwolf.vim
 
 " set PWD to file's folder
 if filereadable("%:p:h")
@@ -95,9 +95,8 @@ autocmd BufReadPost *
 
 
 " for pathogen
-" mkdir -p ~/.vim/autoload ~/.vim/bundle; \
-" curl -Sso ~/.vim/autoload/pathogen.vim \
-"     https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+" mkdir -p ~/.vim/autoload ~/.vim/bundle && wget https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim -O ~/.vim/autoload/pathogen.vim
+"
 execute pathogen#infect()
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
