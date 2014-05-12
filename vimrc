@@ -98,6 +98,7 @@ autocmd BufReadPost *
 " mkdir -p ~/.vim/autoload ~/.vim/bundle && wget https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim -O ~/.vim/autoload/pathogen.vim
 "
 execute pathogen#infect()
+call pathogen#helptags()
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 let g:pymode_syntax = 0
@@ -112,6 +113,8 @@ let g:pymode_rope = 0 " Auto-complete would be nice if it didn't constantly hang
 " !git clone git://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe.git && cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh
 " !git clone git://github.com/b4winckler/vim-angry.git ~/.vim/bundle/vim-angry.git
 " !git clone https://github.com/bling/vim-airline.git ~/.vim/bundle/vim-airline.git
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
 
 " *************************************************************************
 " ************************         Mappings       *************************
