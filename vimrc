@@ -110,7 +110,7 @@ let g:pymode_rope = 0 " Auto-complete would be nice if it didn't constantly hang
 " !git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive.git
 " !git clone git://github.com/klen/python-mode.git ~/.vim/bundle/python-mode.git
 " !git clone git://github.com/hdima/python-syntax.git ~/.vim/bundle/python-syntax.git
-" !git clone git://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe.git && cd ~/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && ./install.sh
+" !git clone git://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe.git && cd ~/.vim/bundle/YouCompleteMe.git && git submodule update --init --recursive && ./install.sh
 " !git clone git://github.com/b4winckler/vim-angry.git ~/.vim/bundle/vim-angry.git
 " !git clone https://github.com/bling/vim-airline.git ~/.vim/bundle/vim-airline.git
 let g:airline#extensions#whitespace#enabled = 0
