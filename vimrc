@@ -20,6 +20,7 @@ set viminfo=s1,<1024000,'1024000,/1024000,:1024000,@1024000,f1,% " save lots of 
 set history=1000
 set diffopt+=iwhite " vimdiff ignore white space
 set formatoptions-=t "do not enter \n automatically at 80 chars
+set complete-=i "keep vim from finding completions in included files, which can be slow
 
 autocmd BufRead,BufEnter *.*,*  set formatprg=par "format everything else using par
 autocmd BufRead,BufEnter *.py set formatprg=autopep8\ - "format python using autopep8"
@@ -50,6 +51,9 @@ set showmatch " show matching bracket
 "some stuff to get the mouse going in term
 set mouse=a
 "set ttymouse=xterm2
+set scrolloff=1 " always show at least 1 line above and below the cursor
+set sidescrolloff=1 " always show at least 5 columns to the left and right of cursor
+set display+=lastline " don't replace long lines with @@@
 
 " text width
 set colorcolumn=80 " show column at 80 characters
@@ -183,6 +187,8 @@ vnoremap < <gv " indentation without losing selection
 vnoremap > >gv " indentation without losing selection
 vnoremap <tab> >gv
 vnoremap <s-tab> <gv
+" Make Y consistent with C and D.  See :help Y.
+nnoremap Y y$
 
 " why doesn't the command line work as it should?
 cnoremap <C-A> <Home>
@@ -241,3 +247,8 @@ function! CSVH(colnr)
   endif
 endfunction
 command! -nargs=1 Csv :call CSVH(<args>)
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+   runtime! macros/matchit.vim
+endif
