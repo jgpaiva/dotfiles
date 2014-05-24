@@ -21,7 +21,7 @@ set history=1000
 set diffopt+=iwhite " vimdiff ignore white space
 set formatoptions-=t "do not enter \n automatically at 80 chars
 
-autocmd BufRead,BufEnter *.*,*  set formatprg=par "format everything else using par
+autocmd BufRead,BufEnter *.*,*  set formatprg=par\|sed\ 's/[[:space:]]*$//' "format everything else using par
 autocmd BufRead,BufEnter *.py set formatprg=autopep8\ - "format python using autopep8"
 
 " search
@@ -115,6 +115,13 @@ let g:pymode_rope = 0 " Auto-complete would be nice if it didn't constantly hang
 " !git clone https://github.com/bling/vim-airline.git ~/.vim/bundle/vim-airline.git
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
+let g:tex_flavor='latex'
+let g:ycm_filetype_blacklist = {
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+      \ 'tex' : 1,
+      \}
 
 " *************************************************************************
 " ************************         Mappings       *************************
