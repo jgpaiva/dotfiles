@@ -1,4 +1,4 @@
-for i in inputrc vimrc
+for i in inputrc vimrc tmux.conf
 do
     if [ -h $HOME/.$i ]
     then

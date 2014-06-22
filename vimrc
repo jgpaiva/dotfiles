@@ -1,7 +1,7 @@
 " must do
 set nocompatible
 
-set term=xterm-256color "apparently this is not needed
+set term=screen-256color "tmux needs this
 colorscheme badwolf
 " from wget https://raw.github.com/sjl/badwolf/master/colors/badwolf.vim -O ~/.vim/colors/badwolf.vim
 
