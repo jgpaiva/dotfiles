@@ -42,12 +42,16 @@ set wildmode=longest,list,full " complete options with tab
 
 " looks-related stuff
 set fillchars=vert:\ ,fold:- " fill chars for splits
-set guioptions=r " right hand scroll bar always present
+set guioptions= " right hand scroll bar always present
 set nofoldenable " Say no to code folding...
+"http://jeffkreeftmeijer.com/2013/vims-new-hybrid-line-number-mode/
+set relativenumber
 set number " show line number
 set numberwidth=1 " don't waste space next to numbers
 set splitright " splitting a window will put the new window right of the current one
 set showmatch " show matching bracket
+set list " Show white spaces
+set listchars=tab:→\ ,trail:·,eol:¬,nbsp:+ " Characters to replace white spaces
 "some stuff to get the mouse going in term
 set mouse=a
 "set ttymouse=xterm2
@@ -73,8 +77,8 @@ set expandtab " expand tabs to spaces
 set autoindent " always set autoindenting on
 set smartindent
 set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 
 " set whichwrap=h,l,~,[,]
 
@@ -117,6 +121,10 @@ let g:pymode_rope = 0 " Auto-complete would be nice if it didn't constantly hang
 " !git clone git://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe.git && cd ~/.vim/bundle/YouCompleteMe.git && git submodule update --init --recursive && ./install.sh
 " !git clone git://github.com/b4winckler/vim-angry.git ~/.vim/bundle/vim-angry.git
 " !git clone https://github.com/bling/vim-airline.git ~/.vim/bundle/vim-airline.git
+" !git clone https://github.com/tpope/vim-markdown.git ~/.vim/bundle/vim-markdown.git
+" !git clone git@github.com:kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim.git
+" !git clone git@github.com:janko-m/vim-test.git ~/.vim/bundle/vim-test.git
+" !git clone git@github.com:scrooloose/syntastic.git ~/.vim/bundle/syntastic.git
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:tex_flavor='latex'
@@ -126,6 +134,24 @@ let g:ycm_filetype_blacklist = {
       \ 'text' : 1,
       \ 'tex' : 1,
       \}
+
+
+" ctrlp options
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_root_markers = ['.git', '.hg', 'Rakefile']
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn))|(node_modules|vendor|coverage|target)$'
+" use silver searcher
+" http://robots.thoughtbot.com/faster-grepping-in-vim
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l -i --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 " *************************************************************************
 " ************************         Mappings       *************************
@@ -199,6 +225,7 @@ nnoremap Y y$
 
 " why doesn't the command line work as it should?
 cnoremap <C-A> <Home>
+let g:ctrlp_map = '<c-f>'
 
 nmap q: :q
 
