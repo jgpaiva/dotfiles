@@ -1,8 +1,6 @@
 " must do
 set nocompatible
 
-set term=screen-256color "tmux needs this
-colorscheme badwolf
 " from wget https://raw.github.com/sjl/badwolf/master/colors/badwolf.vim -O ~/.vim/colors/badwolf.vim
 
 " set PWD to file's folder
@@ -113,6 +111,9 @@ let g:pymode_syntax = 0
 let python_highlight_all = 1
 let g:pymode_lint_checkers = ['pyflakes', 'mccabe'] " disable pep8 annoyances
 let g:pymode_rope = 0 " Auto-complete would be nice if it didn't constantly hang
+set background=dark
+colorscheme Tomorrow-Night-Eighties
+set guifont=Source\ Code\ Pro:h13
 
 
 " !git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive.git
@@ -125,6 +126,15 @@ let g:pymode_rope = 0 " Auto-complete would be nice if it didn't constantly hang
 " !git clone git@github.com:kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim.git
 " !git clone git@github.com:janko-m/vim-test.git ~/.vim/bundle/vim-test.git
 " !git clone git@github.com:scrooloose/syntastic.git ~/.vim/bundle/syntastic.git
+" !git clone https://github.com/vim-scripts/Mark--Karkat ~/.vim/bundle/mark.git
+" !git clone git://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround.git
+" !git clone git://github.com/tpope/vim-endwise.git ~/.vim/bundle/vim-endwise.git
+" !git clone https://github.com/ggreer/the_silver_searcher ~/.vim/bundle/ag && cd ~/.vim/bundle/ag && ./build.sh && sudo make install
+" !git clone https://github.com/rking/ag.vim ~/.vim/bundle/ag && vim +Helptags
+" !git clone https://github.com/tmhedberg/matchit ~/.vim.bundle/matchit
+" !git clone git@github.com:kana/vim-textobj-user.git ~/.vim/bundle/vim-textobj-user
+" !git clone git@github.com:nelstrom/vim-textobj-rubyblock ~/.vim/bundle/vim-textobj-rubyblock
+" !git clone git://github.com/vim-ruby/vim-ruby.git ~/.vim/bundle/vim-ruby
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:tex_flavor='latex'
@@ -147,10 +157,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l -i --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  let g:ctrlp_user_command = 'ag %s -l -i --nocolor -g "" --ignore .git'
 endif
 
 " *************************************************************************
@@ -225,6 +232,8 @@ nnoremap Y y$
 
 " why doesn't the command line work as it should?
 cnoremap <C-A> <Home>
+nnoremap <C-G> :CtrlPLine %<cr>
+nnoremap <C-H> :CtrlPLine<cr>
 let g:ctrlp_map = '<c-f>'
 
 nmap q: :q
