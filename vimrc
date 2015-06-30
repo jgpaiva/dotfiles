@@ -19,6 +19,7 @@ set history=1000
 set diffopt+=iwhite " vimdiff ignore white space
 set formatoptions-=t "do not enter \n automatically at 80 chars
 set complete-=i "keep vim from finding completions in included files, which can be slow
+set nostartofline "Don't reset cursor to start of line when moving around
 
 autocmd BufRead,BufEnter *.*,*  set formatprg=par\|sed\ 's/[[:space:]]*$//' "format everything else using par
 autocmd BufRead,BufEnter *.py set formatprg=autopep8\ - "format python using autopep8"
