@@ -2,10 +2,41 @@
 set nocompatible
 
 " from wget https://raw.github.com/sjl/badwolf/master/colors/badwolf.vim -O ~/.vim/colors/badwolf.vim
+"
+filetype off
+"set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'tpope/vim-fugitive.git'
+Plugin 'klen/python-mode.git'
+Plugin 'hdima/python-syntax.git'
+Plugin 'b4winckler/vim-angry.git'
+Plugin 'bling/vim-airline.git'
+Plugin 'tpope/vim-markdown.git'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'janko-m/vim-test.git'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'vim-scripts/Mark--Karkat'
+Plugin 'tpope/vim-surround.git'
+Plugin 'tpope/vim-endwise.git'
+Plugin 'ggreer/the_silver_searcher'
+Plugin 'rking/ag.vim'
+Plugin 'tmhedberg/matchit'
+Plugin 'kana/vim-textobj-user.git'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'vim-ruby/vim-ruby.git'
+Plugin 'pangloss/vim-javascript.git'
+Plugin 'jelera/vim-javascript-syntax.git'
+Plugin 'mxw/vim-jsx.git'
+Plugin 'bitc/vim-bad-whitespace.git'
+Plugin 'wesQ3/vim-windowswap'
+Plugin 'AndrewRadev/splitjoin.vim.git'
+call vundle#end()
+filetype plugin indent on " Enable filetype-specific indenting and plugins
 
 " set PWD to file's folder
 if filereadable("%:p:h")
-	cd %:p:h
+  cd %:p:h
 endif
 
 
@@ -35,6 +66,7 @@ set showcmd " show (partial) command in the last line of the screen
 set ruler " set ruler (bottom of the screen, info on file position)
 set laststatus=2 " show last statusbar
 set shortmess=atI " shortens messages
+set shortmess+=A
 set infercase " match commands without regard for capitalization
 set wildmenu " completion on command line
 set wildmode=longest,list,full " complete options with tab
@@ -83,9 +115,9 @@ set shiftwidth=2
 
 " backup
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+  set backup " keep a backup file
 endif
 set backupdir=~/.tmp
 set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files
@@ -96,18 +128,12 @@ set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
 autocmd BufReadPost *
-\ if line("'\"") > 1 && line("'\"") <= line("$") |
-\   exe "normal! g`\"" |
-\ endif
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 
 
-" for pathogen
-" mkdir -p ~/.vim/autoload ~/.vim/bundle && wget https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim -O ~/.vim/autoload/pathogen.vim
-"
-execute pathogen#infect()
-call pathogen#helptags()
 syntax on                 " Enable syntax highlighting
-filetype plugin indent on " Enable filetype-specific indenting and plugins
 let g:pymode_syntax = 0
 let python_highlight_all = 1
 let g:pymode_lint_checkers = ['pyflakes', 'mccabe'] " disable pep8 annoyances
@@ -116,28 +142,29 @@ set background=dark
 colorscheme Tomorrow-Night-Eighties
 set guifont=Source\ Code\ Pro:h13
 
-
-" !git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive.git
-" !git clone git://github.com/klen/python-mode.git ~/.vim/bundle/python-mode.git
-" !git clone git://github.com/hdima/python-syntax.git ~/.vim/bundle/python-syntax.git
-" !git clone git://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe.git && cd ~/.vim/bundle/YouCompleteMe.git && git submodule update --init --recursive && ./install.sh
-" !git clone git://github.com/b4winckler/vim-angry.git ~/.vim/bundle/vim-angry.git
-" !git clone https://github.com/bling/vim-airline.git ~/.vim/bundle/vim-airline.git
-" !git clone https://github.com/tpope/vim-markdown.git ~/.vim/bundle/vim-markdown.git
-" !git clone git@github.com:kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim.git
-" !git clone git@github.com:janko-m/vim-test.git ~/.vim/bundle/vim-test.git
-" !git clone git@github.com:scrooloose/syntastic.git ~/.vim/bundle/syntastic.git
-" !git clone https://github.com/vim-scripts/Mark--Karkat ~/.vim/bundle/mark.git
-" !git clone git://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround.git
-" !git clone git://github.com/tpope/vim-endwise.git ~/.vim/bundle/vim-endwise.git
-" !git clone https://github.com/ggreer/the_silver_searcher ~/.vim/bundle/ag && cd ~/.vim/bundle/ag && ./build.sh && sudo make install
-" !git clone https://github.com/rking/ag.vim ~/.vim/bundle/ag && vim +Helptags
-" !git clone https://github.com/tmhedberg/matchit ~/.vim.bundle/matchit
-" !git clone git@github.com:kana/vim-textobj-user.git ~/.vim/bundle/vim-textobj-user
-" !git clone git@github.com:nelstrom/vim-textobj-rubyblock ~/.vim/bundle/vim-textobj-rubyblock
-" !git clone git://github.com/vim-ruby/vim-ruby.git ~/.vim/bundle/vim-ruby
-let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#branch#displayed_head_limit = 15
+let g:airline_left_sep = ''
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_sep = ''
+let g:airline_section_x  = ''
+let g:airline_section_y  = ''
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V-L',
+      \ 'c'  : 'C',
+      \ '' : 'V-B',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
 let g:tex_flavor='latex'
 let g:ycm_filetype_blacklist = {
       \ 'notes' : 1,
@@ -156,6 +183,7 @@ let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn))|(node_modules|vendor|coverag
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
+  let g:ag_highlight=1
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l -i --nocolor -g "" --ignore .git'
@@ -167,7 +195,7 @@ endif
 "leader commands
 let mapleader = "§"
 " compile anything
-nnoremap <Leader>m :w<CR>:make<CR>
+" nnoremap <Leader>m :w<CR>:make<CR>
 " change vim's working directory to file's directory
 nnoremap <Leader>cd :cd%:h<CR>
 " change buffer's local directory to file's directory
@@ -182,6 +210,22 @@ nnoremap <leader>f gqap
 nnoremap <leader>s :update
 " create table from csv
 nnoremap <leader>t :%Table<CR>:set nowrap<CR>
+" start ag!
+nnoremap <leader>a :Ag! 
+nnoremap <leader>k :Ag! <C-R><C-W><CR>
+" <M-N> to to go next quickfix item
+noremap ¬ :cn<CR>
+" <M-P> to to go previous quickfix item
+noremap π :cp<CR>
+
+" <M-H> to go to left window
+noremap ˇ <C-W>h
+" <M-J> to go to left window
+noremap ¯ <C-W>j
+" <M-K> to go to left window
+noremap „ <C-W>k
+" <M-L> to go to left window
+noremap ‘ <C-W>l
 
 " delete word and create undo
 inoremap <C-W> <C-G>u<C-W>
@@ -244,34 +288,34 @@ nmap q: :q
 " *************************************************************************
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+        \ | wincmd p | diffthis
 endif
 
 if !exists("function MyDiff")
-    set diffexpr=
-    function! MyDiff()
-        let opt = '-a --binary '
-        if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-        if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-        let arg1 = v:fname_in
-        if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-        let arg2 = v:fname_new
-        if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-        let arg3 = v:fname_out
-        if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-        let eq = ''
-        if $VIMRUNTIME =~ ' '
-            if &sh =~ '\<cmd'
-                let cmd = '""' . $VIMRUNTIME . '\diff"'
-                let eq = '"'
-            else
-                let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-            endif
-        else
-            let cmd = $VIMRUNTIME . '\diff'
-        endif
-        silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-    endfunction
+  set diffexpr=
+  function! MyDiff()
+    let opt = '-a --binary '
+    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+    let arg1 = v:fname_in
+    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+    let arg2 = v:fname_new
+    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+    let arg3 = v:fname_out
+    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+    let eq = ''
+    if $VIMRUNTIME =~ ' '
+      if &sh =~ '\<cmd'
+        let cmd = '""' . $VIMRUNTIME . '\diff"'
+        let eq = '"'
+      else
+        let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+      endif
+    else
+      let cmd = $VIMRUNTIME . '\diff'
+    endif
+    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+  endfunction
 endif
 
 " Highlight a column in csv text.
@@ -294,5 +338,5 @@ command! -nargs=1 Csv :call CSVH(<args>)
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-   runtime! macros/matchit.vim
+  runtime! macros/matchit.vim
 endif
