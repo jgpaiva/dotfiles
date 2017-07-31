@@ -31,6 +31,10 @@ Plugin 'mxw/vim-jsx.git'
 Plugin 'bitc/vim-bad-whitespace.git'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'AndrewRadev/splitjoin.vim.git'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'tpope/vim-cucumber.git'
+Plugin 'udalov/kotlin-vim.git'
+Plugin 'junegunn/rainbow_parentheses.vim'
 call vundle#end()
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
@@ -250,7 +254,7 @@ nnoremap <C-A> ^
 " save with s
 nnoremap s :update
 " open with enter
-nnoremap <CR> o
+" nnoremap <CR> o
 " insert space with space
 nnoremap <SPACE> a<SPACE>
 " delete with backspace
@@ -340,3 +344,21 @@ command! -nargs=1 Csv :call CSVH(<args>)
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
+
+" enable rainbow parentheses
+"au VimEnter * RainbowParenthesesToggle
+"au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+"au Syntax * RainbowParenthesesLoadBraces
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END
+let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+
+" fix terminal vim slow syntax for ruby
+ augroup ft_rb
+    au!
+    " fix the SLOOOW syntax highlighting
+    au FileType ruby setlocal re=1 foldmethod=manual
+augroup END
