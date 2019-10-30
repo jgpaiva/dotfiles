@@ -35,6 +35,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'tpope/vim-cucumber.git'
 Plugin 'udalov/kotlin-vim.git'
 Plugin 'junegunn/rainbow_parentheses.vim'
+Plugin 'dag/vim-fish'
 call vundle#end()
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
@@ -142,6 +143,8 @@ let g:pymode_syntax = 0
 let python_highlight_all = 1
 let g:pymode_lint_checkers = ['pyflakes', 'mccabe'] " disable pep8 annoyances
 let g:pymode_rope = 0 " Auto-complete would be nice if it didn't constantly hang
+let g:pymode_python = 'python3'
+let g:pymode_indent = 1
 set background=dark
 colorscheme Tomorrow-Night-Eighties
 set guifont=Source\ Code\ Pro:h13
