@@ -354,6 +354,7 @@ you should place your code here."
                                           ))
     (buffer-face-mode))
   (add-hook 'org-mode-hook 'my-set-smaller-font)
+  (setq ruby-insert-encoding-magic-comment nil)
   )
 
 
