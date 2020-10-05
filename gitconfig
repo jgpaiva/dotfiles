@@ -1,0 +1,21 @@
+[user]
+	name = Joao Paiva
+	email = joao.paiva@talkdesk.com
+[push]
+	default = simple
+[core]
+	excludesfile = /Users/jgpaiva/.gitignore_global
+	pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+
+[alias]
+        hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short -n 10
+	b = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:red)%(objectname:short)%(color:reset) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
+[interactive]
+    diffFilter = delta --color-only
+[pull]
+	ff = only
