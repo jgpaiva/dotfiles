@@ -31,44 +31,39 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     ;; better-defaults
+     ;; markdown
+     ;; version-control
+     auto-completion
+     clojure
+     csharp
      csv
-     typescript
+     elixir
+     emacs-lisp
+     emoji
+     git
+     go
+     helm
+     html
+     java
+     javascript
+     kotlin
+     markdown
+     org
+     php
+     plantuml
+     python
+     ruby
      rust
      shell-scripts
-     plantuml
-     emoji
-     go
-     csharp
-     php
-     html
+     spell-checking
+     syntax-checking
+     themes-megapack
+     typescript
      yaml
-     javascript
-     elixir
-     markdown
-     ruby
-     python
-     java
-     kotlin
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     helm
-     auto-completion
-     ;; better-defaults
-     emacs-lisp
-     git
-     ;; markdown
-     org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     spell-checking
-     syntax-checking
-     ;; version-control
-     clojure
-     themes-megapack
      (osx :variables osx-use-option-as-meta nil) 
      )
    ;; List of additional packages that will be installed without being
