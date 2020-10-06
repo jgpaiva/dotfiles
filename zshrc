@@ -8,7 +8,7 @@ export ZSH="/home/jgpaiva/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="ys"
+ZSH_THEME="tjkirch"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -68,7 +68,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git ruby emacs docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,7 +77,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -104,8 +104,37 @@ antigen use oh-my-zsh
 
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-history-substring-search
+antigen theme denysdovhan/spaceship-prompt
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_EXIT_CODE_SHOW=true
+
+SPACESHIP_PROMPT_ORDER=(
+	time          # Time stamps section
+	user          # Username section
+	dir           # Current directory section
+	host          # Hostname section
+	git           # Git section (git_branch + git_status)
+	package       # Package version
+	node          # Node.js section
+	ruby          # Ruby section
+	elixir        # Elixir section
+	rust          # Rust section
+	docker        # Docker section
+	aws           # Amazon Web Services section
+	gcloud        # Google Cloud Platform section
+	venv          # virtualenv section
+	pyenv         # Pyenv section
+	kubectl       # Kubectl context section
+	exec_time     # Execution time
+	line_sep      # Line break
+	jobs          # Background jobs indicator
+	exit_code     # Exit code section
+	char          # Prompt character
+)
