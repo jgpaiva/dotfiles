@@ -138,3 +138,5 @@ SPACESHIP_PROMPT_ORDER=(
 	exit_code     # Exit code section
 	char          # Prompt character
 )
+
+cd ~
