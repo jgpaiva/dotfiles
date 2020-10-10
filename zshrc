@@ -8,7 +8,7 @@ export ZSH="/home/jgpaiva/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="tjkirch"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -98,45 +98,41 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export ALIEN_SECTIONS_LEFT=(
+  exit
+  time
+  user
+  path
+  vcs_branch:async
+  vcs_status:async
+  vcs_dirty:async
+  newline
+  ssh
+  venv
+  prompt
+)
+export ALIEN_SECTION_TIME_FORMAT=%H:%M:%S
+export ALIEN_SECTION_USER_HOST=1
+export ALIEN_USE_NERD_FONT=1
+
 source ~/antigen.zsh
 
 antigen use oh-my-zsh
 
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-history-substring-search
-antigen theme denysdovhan/spaceship-prompt
+antigen theme eendroroy/alien alien
 antigen bundle zsh-users/zsh-syntax-highlighting
 
+antigen theme alien
+
 antigen apply
+
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_EXIT_CODE_SHOW=true
-
-SPACESHIP_PROMPT_ORDER=(
-	time          # Time stamps section
-	user          # Username section
-	dir           # Current directory section
-	host          # Hostname section
-	git           # Git section (git_branch + git_status)
-	package       # Package version
-	node          # Node.js section
-	ruby          # Ruby section
-	elixir        # Elixir section
-	rust          # Rust section
-	docker        # Docker section
-	aws           # Amazon Web Services section
-	gcloud        # Google Cloud Platform section
-	venv          # virtualenv section
-	pyenv         # Pyenv section
-	kubectl       # Kubectl context section
-	exec_time     # Execution time
-	line_sep      # Line break
-	jobs          # Background jobs indicator
-	exit_code     # Exit code section
-	char          # Prompt character
-)
-
 cd ~
+
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
